@@ -54,8 +54,7 @@ def choose_option(update: Update, context: CallbackContext):
 
         msg = "📚 لیست کلاس‌های موجود:\n\n"
         for i, c in enumerate(classes, start=1):
-            msg += f"{i}. روز: {c['day']} | ساعت: {c['time']} | هزینه: {c['price']}
-"
+            msg += f"{i}. روز: {c['day']} | ساعت: {c['time']} | هزینه: {c['price']}"
         msg += "
 برای رزرو، شماره کلاس را بفرست."
 
