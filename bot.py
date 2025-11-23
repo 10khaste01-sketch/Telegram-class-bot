@@ -180,7 +180,7 @@ def confirm_class(update: Update, context: CallbackContext):
     # پیام به ادمین
     admin_id = os.environ.get("ADMIN_CHAT_ID")
     if admin_id:
-        try:
+        admin_id = int(admin_id)
             student = update.effective_user
             text_admin = (
                 "رزرو جدید کلاس:\n\n"
