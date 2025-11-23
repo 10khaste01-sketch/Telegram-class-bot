@@ -202,7 +202,7 @@ def confirm_class(update: Update, context: CallbackContext):
             reply_markup=ReplyKeyboardRemove(),
         )
         context.user_data.clear()
-        return ConversationHandler.END
+            return ConversationHandler.END
 
     chosen = classes.pop(idx)
     save_classes(classes)
