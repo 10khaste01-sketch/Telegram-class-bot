@@ -52,9 +52,7 @@ def choose_option(update: Update, context: CallbackContext):
             update.message.reply_text("هیچ کلاسی ثبت نشده.")
             return ConversationHandler.END
 
-        msg = "📚 لیست کلاس‌های موجود:
-
-"
+        msg = "📚 لیست کلاس‌های موجود:\n\n"
         for i, c in enumerate(classes, start=1):
             msg += f"{i}. روز: {c['day']} | ساعت: {c['time']} | هزینه: {c['price']}
 "
