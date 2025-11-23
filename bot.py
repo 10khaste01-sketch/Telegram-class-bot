@@ -176,25 +176,27 @@ def confirm_class(update: Update, context: CallbackContext):
         "رزرو کلاس شما با موفقیت انجام شد.",
         reply_markup=ReplyKeyboardRemove(),
     )
+# ارسال پیام به ادمین
+admin_id = os.getenv("ADMIN_CHAT_ID")
+if admin_id:
+    admin_id = int(admin_id)
+    student = update.effective_user
 
-    # پیام به ادمین
-    admin_id = os.environ.get("ADMIN_CHAT_ID")
-    if admin_id:
-        admin_id = int(admin_id)
-            student = update.effective_user
-            text_admin = (
-                "رزرو جدید کلاس:\n\n"
-                f"روز: {chosen['day']}\n"
-                f"ساعت: {chosen['time']}\n"
-                f"هزینه: {chosen['price']}\n\n"
-                f"هنرجو id: {student.id}\n"
-                f"هنرجو username: @{student.username if student.username else 'ندارد'}\n\n"
-                f"استاد id: {chosen['teacher_id']}\n"
-                f"استاد username: @{chosen['teacher_username'] if chosen['teacher_username'] else 'ندارد'}"
-            )
-            update.get_bot().send_message(chat_id=int(admin_id), text=text_admin)
-        except Exception as e:
-            print("Failed to notify admin:", e)
+    username = f"@{student.username}" if student.username else "یوزرنیم ندارد"
+
+    text_admin = (
+        "🔥 رزرو جدید:\n"
+        f"📅 روز: {chosen['day']}\n"
+        f"⏰ ساعت: {chosen['time']}\n"
+        f"💵 هزینه: {chosen['price']}\n"
+        f"🧑‍🎓 هنرجو: {username}\n"
+        f"🆔 آیدی عددی: {student.id}\n"
+    )
+
+    try:
+        context.bot.send_message(chat_id=admin_id, text=text_admin)
+    except Exception as e:
+        print("❌ Error sending to admin:", e)
 
     context.user_data.clear()
     return ConversationHandler.END
