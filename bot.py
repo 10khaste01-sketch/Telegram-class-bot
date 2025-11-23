@@ -55,8 +55,7 @@ def choose_option(update: Update, context: CallbackContext):
         msg = "📚 لیست کلاس‌های موجود:\n\n"
         for i, c in enumerate(classes, start=1):
             msg += f"{i}. روز: {c['day']} | ساعت: {c['time']} | هزینه: {c['price']}"
-        msg += "
-برای رزرو، شماره کلاس را بفرست."
+        msg += "برای رزرو، شماره کلاس را بفرست."
 
         update.message.reply_text(msg)
         return SELECT_CLASS
@@ -109,15 +108,10 @@ def select_class(update: Update, context: CallbackContext):
     context.user_data["idx"] = idx
 
     summary = (
-        "این کلاس را انتخاب کردی:
-"
-        f"روز: {chosen['day']}
-"
-        f"ساعت: {chosen['time']}
-"
-        f"هزینه: {chosen['price']}
-
-"
+        "این کلاس را انتخاب کردی:"
+        f"روز: {chosen['day']}"
+        f"ساعت: {chosen['time']}"
+        f"هزینه: {chosen['price']}"
         "آیا این کلاس را می‌خوای؟"
     )
 
