@@ -143,18 +143,11 @@ def confirm_class(update: Update, context: CallbackContext):
     if admin:
         try:
             msg = (
-                "🔥 رزرو جدید:
-
-"
-                f"روز: {chosen['day']}
-"
-                f"ساعت: {chosen['time']}
-"
-                f"هزینه: {chosen['price']}
-
-"
-                f"هنرجو: {update.effective_user.id}
-"
+                "🔥 رزرو جدید:"
+                f"روز: {chosen['day']}"
+                f"ساعت: {chosen['time']}"
+                f"هزینه: {chosen['price']}"
+                f"هنرجو: {update.effective_user.id}"
                 f"یوزرنیم: @{update.effective_user.username}"
             )
             update.get_bot().send_message(int(admin), msg)
