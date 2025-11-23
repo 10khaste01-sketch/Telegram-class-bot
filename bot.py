@@ -65,8 +65,7 @@ def choose_option(update: Update, context: CallbackContext):
                 f"{i}. Day: {c['day']} | Time: {c['time']} | Price: {c['price']}"
             )
 
-        update.message.reply_text("
-".join(msg_lines))
+        update.message.reply_text(" ".join(msg_lines))
         return ConversationHandler.END
 
     update.message.reply_text("Use the keyboard buttons.")
